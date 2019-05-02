@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        var i = 0
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -25,10 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         ibtQuestionHintShow.setOnClickListener(object : View.OnClickListener{
             override  fun onClick(v: View){
-                tvQuestionHintContent.setText("데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라고 한다.")
-                tvQuestionHintContent.visibility = VISIBLE
 
+                i = 1-i
+
+                if(i ==0){
+                    tvQuestionHintContent.setText("데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라고 한다.")
+                    tvQuestionHintContent.visibility = VISIBLE
+                }
+                else{
+                    tvQuestionHintContent.visibility = GONE
+                }
             }
+
         })
 
     }
