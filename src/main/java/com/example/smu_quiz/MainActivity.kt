@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 if(i ==0){
-                    tvQuestionHintContent.setText()
+                    tvQuestionHintContent.setText("힌트가 없습니다.")
                     tvQuestionHintContent.visibility = VISIBLE
                 }
                 else{
@@ -49,6 +50,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+        })
+
+        ivMainLike.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View){
+
+                i = 1-i
+
+                if(i ==0){
+                    ivMainLike.setImageResource(R.drawable.like_fill)
+                    }else{
+                    ivMainLike.setImageResource(R.drawable.like_empty)
+                }
+            }
         })
 
     }
