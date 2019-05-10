@@ -139,6 +139,7 @@
 
         <TextView
                 android:id="@+id/tvQuestionHintContent"
+                android:background="@drawable/rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
