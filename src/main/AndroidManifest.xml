@@ -20,10 +20,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CorrectActivity"
+        <activity android:name=".AnswerCorrect"
                   android:theme="@style/Transparent">
 
         </activity>
+        <activity android:name=".AnswerWrong"
+                  android:theme="@style/Transparent">
+
+        </activity>
+
+        <activity android:name=".TotalResult"
+                  android:theme="@style/Transparent">
+
+        </activity>
+
     </application>
 
 </manifest>
