@@ -11,5 +11,6 @@
     <string name="goto_wrong">오답 확인하러 가기</string>
     <string name="goto_main">메인화면으로</string>
     <string name="aWrongAnswer">aWrongAnswer() { \n ... \n }</string>
-    <string name="goToMain">foToMain() { \n ... \n }</string>
+    <string name="goToMain">goToMain() { \n ... \n }</string>
+    <string name="solve">오답풀이</string>
 </resources>

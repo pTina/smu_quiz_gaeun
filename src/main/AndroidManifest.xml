@@ -33,6 +33,9 @@
                   android:theme="@style/Transparent">
 
         </activity>
+        <activity android:name=".WrongSolving">
+
+        </activity>
 
     </application>
 
