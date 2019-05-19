@@ -2,13 +2,24 @@ package com.example.smu_quiz
 
 import android.content.Context
 import android.content.Intent
+import android.media.Image
+import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.MainThread
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.item_answer.view.*
+import org.w3c.dom.Text
+import java.util.zip.Inflater
 
 class AnswerAdapter(val context: Context, val answerList:ArrayList<Answer>, val itemClick: (Answer) -> Unit):
         RecyclerView.Adapter<AnswerAdapter.Holder>(){
@@ -35,30 +46,19 @@ class AnswerAdapter(val context: Context, val answerList:ArrayList<Answer>, val 
         )
 
         return Holder(view, itemClick)
+
     }
 
     override fun getItemCount(): Int {
         return answerList.size
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
 
+    //position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(answerList[position], context)
 
-        holder.answerCheckbox.setOnClickListener(object: View.OnClickListener{
-            val correct =1
-            val intent = Intent(context, AnswerCorrect::class.java)
-            val intent2 = Intent(context, AnswerWrong::class.java)
 
-            override fun onClick(v: View){
-                if(position+1 == correct){
-                    startActivity(context,intent,null)
-                }else{
-                    startActivity(context,intent2,null)
-                }
-            }
-
-        })
     }
 
 

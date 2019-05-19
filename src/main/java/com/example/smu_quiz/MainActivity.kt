@@ -8,16 +8,18 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_answer.*
+import kotlinx.android.synthetic.main.item_answer.view.*
 import kotlinx.android.synthetic.main.mock_test_start.*
 
 class MainActivity : AppCompatActivity() {
-
-    val correct = 1
 
     var answerList= arrayListOf<Answer>(
 
@@ -27,25 +29,51 @@ class MainActivity : AppCompatActivity() {
         Answer("변환(Translation)")
     )
 
+    var questionList= arrayListOf<Question>(
+        Question("database","문제1번 내용 입니다.", 1, "문제1번 힌트"),
+        Question("Algorithm","문제2번 내용 입니다.", 2, "문제2번 힌트"),
+        Question("operation system","문제3번 내용 입니다.", 3, "문제3번 힌트"),
+        Question("database","문제4번 내용 입니다.", 4, "문제4번 힌트")
 
+    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         var i = 0
-
+        var j = 0
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //
+        tvMainTopTitle.setText(questionList[0].subject)
+        tvMainQuestionContent.setText(questionList[0].content)
+        tvMainQuestionNum.text="Question ${questionList[0].quiznum}"
+        tvQuestionHintContent.setText(questionList[0].hint)
+
+        tvNext.setOnClickListener {
+            j += 1
+            if(j < questionList.size){
+                tvMainTopTitle.setText(questionList[j].subject)
+                tvMainQuestionContent.setText(questionList[j].content)
+                tvMainQuestionNum.text="Question ${questionList[j].quiznum}"
+                tvQuestionHintContent.setText(questionList[j].hint)
+
+            }else{
+                Toast.makeText(this,"더이상 문제가 없습니다.",Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
         tvQuestionHintContent.visibility = GONE
 
         val mAdapter = AnswerAdapter(this,answerList){ answer ->
 
         }
-        lvMainMultipleChoice.adapter = mAdapter
+        rvMainMultipleChoice.adapter = mAdapter
 
         val lm = LinearLayoutManager(this)
-        lvMainMultipleChoice.layoutManager = lm
-        lvMainMultipleChoice.setHasFixedSize(true)
+        rvMainMultipleChoice.layoutManager = lm
+        rvMainMultipleChoice.setHasFixedSize(true)
 
 
         ibtQuestionHintShow.setOnClickListener(object : View.OnClickListener{
@@ -54,7 +82,6 @@ class MainActivity : AppCompatActivity() {
                 i = 1-i
 
                 if(i == 1){
-                    tvQuestionHintContent.setText("힌트가 없습니다.")
                     tvQuestionHintContent.visibility = VISIBLE
                 }
                 else{
@@ -77,10 +104,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        tvNext.setOnClickListener {
-            val intent = Intent(applicationContext, MockTestStart::class.java)
-            startActivity(intent)
-        }
+
 
 
     }

@@ -30,7 +30,6 @@
 
         <TextView
                 android:id="@+id/tvMainTopTitle"
-                android:text="DataBase"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
@@ -54,10 +53,34 @@
             android:layout_weight="10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/ivAnswerCorrect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_correct"
+                    android:layout_margin="20dp"
+                    android:visibility="invisible"
+            />
+            <ImageView
+                    android:id="@+id/ivAnswerWrong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_wrong"
+                    android:layout_margin="20dp"
+                    android:visibility="invisible"
+            />
+
+
+
+        </FrameLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clMainQuestionAndLike"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="57dp"
                 android:background="@drawable/underline"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -69,7 +92,6 @@
                 android:layout_marginEnd="20dp">
             <TextView
                     android:id="@+id/tvMainQuestionNum"
-                    android:text="Question 13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -95,14 +117,12 @@
                     app:layout_constraintTop_toTopOf="@+id/tvMainQuestionNum"/>
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView
                 android:id="@+id/tvMainQuestionContent"
                 android:layout_width="match_parent"
-                android:text="@string/question_content"
                 android:textColor="@color/colorText"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -116,7 +136,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lvMainMultipleChoice"
+                android:id="@+id/rvMainMultipleChoice"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,8 +153,8 @@
                 android:background="@color/any"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/lvMainMultipleChoice"
-                app:layout_constraintStart_toStartOf="@+id/lvMainMultipleChoice"
+                app:layout_constraintTop_toBottomOf="@+id/rvMainMultipleChoice"
+                app:layout_constraintStart_toStartOf="@+id/rvMainMultipleChoice"
         />
 
         <TextView
@@ -174,23 +194,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <TextView
-                android:id="@+id/tvMainBottomPageNum"
-                android:text="13/50"
-                android:gravity="center"
-                android:layout_width="43dp"
-                android:layout_height="38dp"
-                tools:ignore="MissingConstraints"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
