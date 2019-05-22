@@ -1,8 +1,14 @@
 package com.example.smu_quiz
 
-class Question (
-    val subject: String,
-    val content: String,
-    val quiznum: Int,
-    val hint: String
+open class Question (
+    open var subject: String,
+    open var content: String,
+    open var quiznum: Int,
+    open var anwser: Int,
+    open var like: Boolean,
+    open var correct: Boolean,
+    open var choice1: String,
+    open var choice2: String,
+    open var choice3: String,
+    open var choice4: String
 )

@@ -19,7 +19,6 @@
     <TextView
             android:id="@+id/tvTotalResult"
             android:layout_weight="0.7"
-            android:text="@string/total_result"
             android:background="@drawable/underline"
             android:textSize="24sp"
             android:fontFamily="sans-serif-medium"

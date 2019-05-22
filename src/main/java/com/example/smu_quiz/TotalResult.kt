@@ -12,15 +12,19 @@ class TotalResult : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.total_result)
 
-        tvBoxWrongAnswer.setOnClickListener{
-            val intent = Intent(applicationContext, WrongSolving::class.java)
-            startActivity(intent)
+        if(intent.hasExtra("total")){
+            var total = intent.getIntExtra("total",0)
+
+            tvTotalResult.setText("10문제 중에서 ${total}문제 맞췄습니다.")
+
         }
 
-        tvBoxGotoMain.setOnClickListener {
-            val intent2 = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent2)
+        tvBoxGotoMain.setOnClickListener{
+            finish()
         }
+
+
+
 
     }
 }

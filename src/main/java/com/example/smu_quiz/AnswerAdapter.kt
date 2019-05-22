@@ -11,6 +11,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.MainThread
 import androidx.core.content.ContextCompat.startActivity
@@ -21,22 +22,23 @@ import kotlinx.android.synthetic.main.item_answer.view.*
 import org.w3c.dom.Text
 import java.util.zip.Inflater
 
-class AnswerAdapter(val context: Context, val answerList:ArrayList<Answer>, val itemClick: (Answer) -> Unit):
+interface OnItemClickListener{
+    fun itemClick(isCheck : Boolean, position: Int)
+}
+
+class AnswerAdapter(val context: Context, val answerList: List<Answer>, val questionList: List<Question>, val listener: OnItemClickListener):
         RecyclerView.Adapter<AnswerAdapter.Holder>(){
 
-    inner class Holder(itemView: View, itemClick: (Answer) -> Unit) : RecyclerView.ViewHolder(itemView){
+    inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val answerCheckbox =  itemView.findViewById<CheckBox>(R.id.cbCheck)
+        val answerChoice = itemView.findViewById<TextView>(R.id.tvChoice)
 
 
-        val answerCheckbox =  itemView.findViewById<CheckBox>(R.id.cbCheckBox)
-        val answerContents = itemView.findViewById<TextView>(R.id.tvContents)
-
-
-        fun bind(answer: Answer, context: Context){
-            answerContents.text = answer.contents
-
-            answerCheckbox.setOnClickListener { itemClick(answer) }
-
+        fun bind(answer: Answer, question: Question, context: Context){
+            answerCheckbox.isClickable = answer.ischecked
+            answerChoice.text = answer.choice
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -44,8 +46,7 @@ class AnswerAdapter(val context: Context, val answerList:ArrayList<Answer>, val 
         val view =  LayoutInflater.from(context).inflate(
             R.layout.item_answer,parent,false
         )
-
-        return Holder(view, itemClick)
+        return Holder(view)
 
     }
 
@@ -56,8 +57,11 @@ class AnswerAdapter(val context: Context, val answerList:ArrayList<Answer>, val 
 
     //position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(answerList[position], context)
+        holder.bind(answerList[position], questionList[1], context)
 
+        holder.answerCheckbox.setOnClickListener ({
+            listener.itemClick(holder.answerCheckbox.isChecked, position)
+        })
 
     }
 

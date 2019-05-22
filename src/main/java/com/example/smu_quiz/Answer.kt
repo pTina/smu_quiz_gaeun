@@ -1,5 +1,7 @@
 package com.example.smu_quiz
 
-class Answer (
-    val contents : String
+open class Answer (
+    open var ischecked: Boolean,
+    open var choice: String
+
 )

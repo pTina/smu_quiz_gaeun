@@ -19,27 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".AnswerCorrect"
+        <activity android:name=".StopActivity"
                   android:theme="@style/Transparent">
 
         </activity>
-        <activity android:name=".AnswerWrong"
-                  android:theme="@style/Transparent">
 
-        </activity>
 
         <activity android:name=".TotalResult"
                   android:theme="@style/Transparent">
-
-        </activity>
-        <activity android:name=".WrongSolving">
 
         </activity>
 
         <activity android:name=".MockTestStart"
                   android:theme="@style/Transparent"
         >
+
+        </activity>
+        <activity android:name=".MockTestMain">
 
         </activity>
 
